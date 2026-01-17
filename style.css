@@ -13,9 +13,7 @@ body {
     overflow: hidden;
 }
 
-/* =====================
-   SCREENS
-===================== */
+/* SCREENS */
 .screen {
     display: none;
     background: white;
@@ -29,16 +27,12 @@ body {
     display: block;
 }
 
-/* =====================
-   HEADINGS
-===================== */
+/* HEADINGS */
 h1, h2 {
     color: #ff4d6d;
 }
 
-/* =====================
-   BUTTONS
-===================== */
+/* BUTTONS */
 button {
     padding: 16px 36px;
     font-size: 18px;
@@ -60,9 +54,7 @@ button:hover {
     background: #999;
 }
 
-/* =====================
-   HEART BUTTON (GAME)
-===================== */
+/* HEART BUTTON (GAME) */
 #heartBtn {
     font-size: 40px;
     padding: 20px 30px;
@@ -77,9 +69,7 @@ button:hover {
     transform: scale(1.2);
 }
 
-/* =====================
-   GAME AREA
-===================== */
+/* GAME AREA */
 #gameArea {
     position: relative;
     width: 300px;
@@ -94,28 +84,11 @@ button:hover {
     position: absolute;
     bottom: 10px;
     left: 120px;
-    width: 50px;
-    height: 80px;
-    border: 2px solid rgba(255, 105, 180, 0.9);
-    border-radius: 10px 10px 14px 14px;
-    background: rgba(255, 182, 193, 0.45);
-    backdrop-filter: blur(4px);
+    font-size: 40px;
+    cursor: pointer;
 }
 
-#bottle::after {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 8px;
-    height: 60px;
-    background: rgba(255,255,255,0.7);
-    border-radius: 4px;
-}
-
-/* =====================
-   FALLING HEARTS
-===================== */
+/* FALLING HEARTS */
 .heart-fall {
     position: absolute;
     top: -30px;
@@ -130,9 +103,7 @@ button:hover {
     }
 }
 
-/* =====================
-   QUIZ
-===================== */
+/* QUIZ */
 #quizOptions button {
     display: block;
     width: 85%;
@@ -151,9 +122,13 @@ button:hover {
     color: white;
 }
 
-/* =====================
-   POPUP
-===================== */
+#quizFeedback {
+    margin-top: 15px;
+    font-style: italic;
+    color: #444;
+}
+
+/* POPUP OVERLAY */
 .popup {
     position: fixed;
     inset: 0;
@@ -164,6 +139,7 @@ button:hover {
     z-index: 1000;
 }
 
+/* POPUP CONTENT */
 .popup-content {
     background: white;
     padding: 25px;
@@ -173,67 +149,77 @@ button:hover {
     animation: popIn 0.3s ease;
 }
 
-@keyframes popIn {
-    0% { transform: scale(0.7); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+.popup-content img {
+    width: 160px;
+    border-radius: 15px;
 }
 
-/* =====================
-   FINAL PHOTO
-===================== */
+/* POPUP TEXT */
+.angry-text {
+    margin: 15px 0;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* TRY AGAIN BUTTON */
+#tryAgainBtn {
+    padding: 10px 22px;
+    border-radius: 22px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#tryAgainBtn:hover {
+    background: #e63950;
+}
+
+/* POPUP ANIMATION */
+@keyframes popIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* HIDE GAME NEXT BY DEFAULT */
+#gameNextBtn {
+    display: none;
+}
+#bottle {
+     position: absolute;
+    bottom: 10px;
+    left: 120px;
+    width: 50px;
+    height: 80px;
+    border: 2px solid rgba(255, 105, 180, 0.9);   /* pink outline */
+    border-radius: 10px 10px 14px 14px;
+    background: rgba(255, 182, 193, 0.45);       /* soft pink glass */
+    backdrop-filter: blur(4px);
+}
+#bottle::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 60px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 4px;
+}
 .final-photo {
-    width: 70vw;
-    max-width: 320px;
+    width: 70vw;        /* smaller than before */
+    max-width: 320px;   /* perfect size on laptop */
     height: auto;
     border-radius: 25px;
     margin-top: 20px;
     box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3);
 }
 
-/* =====================
-   📱 MOBILE FIX (SAFE)
-===================== */
-@media (max-width: 768px) {
-
-  body {
-    font-size: 16px;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-
-  button {
-    font-size: 1.1rem;
-    padding: 14px 20px;
-  }
-}
-
-/* =====================
-   CATCH MY HEART — MOBILE
-===================== */
-@media (max-width: 768px) {
-
-  .heart-screen h2 {
-    font-size: 1.6rem;
-  }
-
-  .heart-screen p {
-    font-size: 1.15rem;
-  }
-
-  #heartBtn {
-    width: 130px;
-    height: 130px;
-    font-size: 2.2rem;
-  }
-}
