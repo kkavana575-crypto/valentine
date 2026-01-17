@@ -252,10 +252,23 @@ function finishQuiz() {
     startHearts();
 }
 
-gameArea.onmousemove = (e) => {
-    const rect = gameArea.getBoundingClientRect();
-    bottle.style.left = Math.min(260, Math.max(0, e.clientX - rect.left - 20)) + "px";
-};
+function moveBottle(clientX) {
+  const rect = gameArea.getBoundingClientRect();
+  const x = clientX - rect.left - 20;
+  bottle.style.left = Math.min(260, Math.max(0, x)) + "px";
+}
+
+/* 🖱 Laptop */
+gameArea.addEventListener("mousemove", (e) => {
+  moveBottle(e.clientX);
+});
+
+/* 📱 Mobile */
+gameArea.addEventListener("touchmove", (e) => {
+  e.preventDefault(); // stop screen scrolling
+  moveBottle(e.touches[0].clientX);
+}, { passive: false });
+
 
 function startHearts() {
     const interval = setInterval(() => {
@@ -286,3 +299,4 @@ function startHearts() {
         setTimeout(() => heart.remove(), 3000);
     }, 700);
 }
+
