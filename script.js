@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 /***********************
   SCREENS
 ************************/
@@ -18,6 +20,7 @@ const music = document.getElementById("bgMusic");
 let musicStarted = false;
 
 function stopMusic() {
+  if (!music) return;
   music.pause();
   music.currentTime = 0;
   musicStarted = false;
@@ -295,6 +298,9 @@ function startHearts() {
     setTimeout(() => heart.remove(), 3000);
   }, 700);
 }
+
+});
+
 
 
 
