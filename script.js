@@ -131,21 +131,12 @@ storyBackBtn.onclick = () => {
 /***********************
   GAME (HEART TAP)
 ************************/
-const heartBtn = document.getElementById("heartBtn");
-const gameText = document.getElementById("gameText");
+heartBtn.addEventListener("click", handleHeart);
+heartBtn.addEventListener("touchstart", handleHeart);
 
-let heartCount = 0;
+function handleHeart(e) {
+    e.preventDefault();
 
-function openGame() {
-    gameScreen.classList.add("active");
-    heartCount = 0;
-    heartBtn.style.display = "inline-block";
-    gameText.innerText = "Tap the heart 💕";
-    gameNextBtn.style.display = "none";
-    gameBackBtn.style.display = "none";
-}
-
-heartBtn.onclick = () => {
     heartCount++;
     if (heartCount < 3) {
         gameText.innerText = `You caught my heart ${heartCount} time(s) 💕`;
@@ -155,17 +146,10 @@ heartBtn.onclick = () => {
         gameNextBtn.style.display = "inline-block";
         gameBackBtn.style.display = "inline-block";
     }
-};
+}
 
-gameBackBtn.onclick = () => {
-    gameScreen.classList.remove("active");
-    storyScreen.classList.add("active");
-};
 
-gameNextBtn.onclick = () => {
-    gameScreen.classList.remove("active");
-    openQuiz();
-};
+
 
 /***********************
   QUIZ
@@ -324,5 +308,6 @@ function startHearts() {
         setTimeout(() => heart.remove(), 3000);
     }, 700);
 }
+
 
 
