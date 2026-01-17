@@ -264,10 +264,35 @@ gameArea.addEventListener("mousemove", (e) => {
 });
 
 /* 📱 Mobile */
+function moveBottle(clientX) {
+  const rect = gameArea.getBoundingClientRect();
+  const x = clientX - rect.left - 20;
+  bottle.style.left = Math.min(260, Math.max(0, x)) + "px";
+}
+
+/* 🖱 Laptop */
+gameArea.addEventListener("mousemove", (e) => {
+  moveBottle(e.clientX);
+});
+
+/* 📱 Mobile — ONLY block scroll while touching the game */
+let isTouchingGame = false;
+
+gameArea.addEventListener("touchstart", () => {
+  isTouchingGame = true;
+});
+
+gameArea.addEventListener("touchend", () => {
+  isTouchingGame = false;
+});
+
 gameArea.addEventListener("touchmove", (e) => {
-  e.preventDefault(); // stop screen scrolling
-  moveBottle(e.touches[0].clientX);
+  if (isTouchingGame) {
+    e.preventDefault(); // block scroll ONLY in game
+    moveBottle(e.touches[0].clientX);
+  }
 }, { passive: false });
+
 
 
 function startHearts() {
@@ -299,4 +324,5 @@ function startHearts() {
         setTimeout(() => heart.remove(), 3000);
     }, 700);
 }
+
 
