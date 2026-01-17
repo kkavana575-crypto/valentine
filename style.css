@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffb6c1, #fff, #ffccd5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* SCREENS */
+.screen {
+    display: none;
+    background: white;
+    padding: 35px 45px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+.screen.active {
+    display: block;
+}
+
+/* HEADINGS */
+h1, h2 {
+    color: #ff4d6d;
+}
+
+/* BUTTONS */
+button {
+    padding: 16px 36px;
+    font-size: 18px;
+    border: none;
+    border-radius: 40px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    margin: 12px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#backBtn,
+#gameBackBtn {
+    background: #999;
+}
+
+/* HEART BUTTON (GAME) */
+#heartBtn {
+    font-size: 40px;
+    padding: 20px 30px;
+    border-radius: 50%;
+    background: #ff4d6d;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#heartBtn:hover {
+    transform: scale(1.2);
+}
+
+/* GAME AREA */
+#gameArea {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: #fff0f5;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+#bottle {
+    position: absolute;
+    bottom: 10px;
+    left: 120px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* FALLING HEARTS */
+.heart-fall {
+    position: absolute;
+    top: -30px;
+    font-size: 24px;
+    animation: fallHeart 3s linear forwards;
+}
+
+@keyframes fallHeart {
+    to {
+        transform: translateY(420px);
+        opacity: 0;
+    }
+}
+
+/* QUIZ */
+#quizOptions button {
+    display: block;
+    width: 85%;
+    margin: 10px auto;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background: #ffccd5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#quizOptions button:hover {
+    background: #ff4d6d;
+    color: white;
+}
+
+#quizFeedback {
+    margin-top: 15px;
+    font-style: italic;
+    color: #444;
+}
+
+/* POPUP OVERLAY */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* POPUP CONTENT */
+.popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    text-align: center;
+    width: 280px;
+    animation: popIn 0.3s ease;
+}
+
+.popup-content img {
+    width: 160px;
+    border-radius: 15px;
+}
+
+/* POPUP TEXT */
+.angry-text {
+    margin: 15px 0;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* TRY AGAIN BUTTON */
+#tryAgainBtn {
+    padding: 10px 22px;
+    border-radius: 22px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#tryAgainBtn:hover {
+    background: #e63950;
+}
+
+/* POPUP ANIMATION */
+@keyframes popIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* HIDE GAME NEXT BY DEFAULT */
+#gameNextBtn {
+    display: none;
+}
+#bottle {
+     position: absolute;
+    bottom: 10px;
+    left: 120px;
+    width: 50px;
+    height: 80px;
+    border: 2px solid rgba(255, 105, 180, 0.9);   /* pink outline */
+    border-radius: 10px 10px 14px 14px;
+    background: rgba(255, 182, 193, 0.45);       /* soft pink glass */
+    backdrop-filter: blur(4px);
+}
+#bottle::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 60px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 4px;
+}
+.final-photo {
+    width: 70vw;        /* smaller than before */
+    max-width: 320px;   /* perfect size on laptop */
+    height: auto;
+    border-radius: 25px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3);
+}
